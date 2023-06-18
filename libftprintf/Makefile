@@ -6,7 +6,7 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/16 10:17:41 by palucena          #+#    #+#              #
-#    Updated: 2023/06/18 17:50:36 by palucena         ###   ########.fr        #
+#    Updated: 2023/06/18 20:23:32 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,10 +92,12 @@ DFLGS =		-MMD -MP -O1
 all: $(NAME)
 
 -include $(DEPS)
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@ $(CC) $(CFLGS) $(DFLGS) -c -o $@ $< $(IFLGS)
 
 $(OBJ_DIR):
+	@ echo "\n	-------- Compiling lib --------"
 	@ mkdir -p $(OBJ_DIR)
 	@ mkdir -p $(OBJ_DIR)/$(LIBFT_DIR)
 	@ mkdir -p $(OBJ_DIR)/$(FT_PRINTF_DIR)
@@ -103,12 +105,15 @@ $(OBJ_DIR):
 $(NAME): $(OBJS)
 	@ ar rcs $(NAME) $(OBJS)
 	@ ranlib $(NAME)
+	@ echo "		Libftprintf compiled!!\n"
 
 clean:
-	$(RM) $(OBJ_DIR)
+	@ $(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@ echo "\n	Deleting everything!!\n"
+	@ $(RM) $(NAME)
+	
 
 re: fclean all
 
