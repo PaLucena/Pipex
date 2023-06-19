@@ -6,26 +6,26 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 16:02:09 by palucena          #+#    #+#              #
-#    Updated: 2023/06/19 12:12:00 by palucena         ###   ########.fr        #
+#    Updated: 2023/06/19 12:57:32 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ------------  PROJECT  ----------------------------------------------------- #
 NAME = pipex.a
-LIBFT = 
+LIBFT = $(LIBFT_PATH)/libft.a
 
-# ------------  DIRECTORIES  ------------------------------------------------- #
-SRC_DIR =	src
-HDR_DIR =	hdr
-OBJ_DIR =	objs
+SRCS = $(addsuffix .c $(FILES))
+OBJS = $(addprefix $(OBJ_PATH)/, $(SRCS:.c=.o))
+
+# ------------  DIRECTORIES/PATHS  ------------------------------------------- #
+LIBFT_PATH = ./libft
+OBJ_PATH = ./obj
+SRC_PATH = ./src
+INC_PATH = ./inc
 
 # ------------  SOURCE FILES  ------------------------------------------------ #
-SRC_FLS = $(SRC_DIR)/pipex.c\
-	$(SRC_DIR)/pipex_utils.c
-
-# ------------  FILEPATHS  --------------------------------------------------- #
-SRCS =	$(addprefix $(SRC_DIR)/, $(SRC_FLS))
-OBJS =	$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRCS))
+FILES = pipex.c\
+		pipex_utils.c
 
 # ------------  FLAGS  ------------------------------------------------------- #
 CC =		gcc
@@ -34,26 +34,28 @@ CFLAGS =	-Wall -Werror -Wextra
 LIB =		ar rcs
 
 # ------------  RULES  ------------------------------------------------------- #
-all: $(NAME)
-
-$(OBJ): $(SRC_FLS)
-	$(CC)$(CFLAGS) -c $(SRC_FLS)
-
-$(OBJ_DIR):
-	@ echo "\n	-------- Compiling program... --------"
-	
-
 $(NAME): $(OBJS)
-	@ $(LIB) $(NAME) $(OBJ)
-	@ ranlib $(NAME)
+	@ make -C $(LIBFT_PATH)
+	cp $(LIBFT) ./$@
+	$(LIB) $@ $(OBJS)
 	@ echo "		Pipex compiled!!\n"
 
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC_PATH)/pipex.h
+	@ echo "\n	-------- Compiling program... --------"		
+	mkdir -p $(OBJ_PATH)
+	$(LIB) $(CFLAGS) -I $(INC_PATH) -c $< -o $@
+
+all: $(NAME)
+
 clean:
-	@ $(RM) $(OBJ)
+	@ $(RM) $(OBJS) $(OBJ_PATH)
+	make clean -C $(LIBFT_PATH)
+	@ echo "\n	Deleting objects\n"
 		
 fclean: clean
 	@ echo "\n	Deleting everything!!\n"
 	@ $(RM) $(NAME)
+	
 
 re: fclean all
 
