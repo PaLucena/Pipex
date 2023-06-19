@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:15:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/18 19:45:30 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:31:19 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <sys/wait.h>
-# include "libftprintf/header_files/libft.h"
+# include "../libft/libft.a"
 
 // las funciones van aquí
 
