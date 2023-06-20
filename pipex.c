@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/20 13:18:28 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:19:38 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,23 @@ void	child_process(char **av, char **envp, int *fd)
 	dup2(av[1], STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
+	cloes(ev[1])
 	exec_program(); // Está por empezar
 }
 
 void	parent_process(char **av, char **envp, int *fd)
 {
-	
+	int	outfile;
+
+	wait(NULL);
+	outfile = open(av[4], O_WRONLY);
+	if (outfile == -1)
+		perror();
+	dup2(av[4], STDOUT_FILENO);
+	dup2(fd[0], STDIN_FILENO);
+	close(fd[1]);
+	close(av[4]);
+	exec_program();
 }
 
 int	main(int ac, char **av, char **envp)
