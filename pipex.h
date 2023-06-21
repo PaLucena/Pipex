@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:15:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/19 13:47:13 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:47:32 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <sys/wait.h>
 # include "libft/libft.h"
 
-// las funciones van aquí
+// pipex_utils.c
+void	exec_program(char **av, char **envp);
+char	*find_path(char *cmd, char **envp);
 
 #endif

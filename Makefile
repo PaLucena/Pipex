@@ -1,53 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/14 16:02:09 by palucena          #+#    #+#              #
-#    Updated: 2023/06/19 13:58:11 by palucena         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME= pipex
+CC= gcc
+FLAGS= -Wall -Wextra -Werror 
+RM= rm -rf
+SRCS=      pipex.c pipex_utils.c
+SRCS=      pipex.c pipex_utils.c
+SRCS=      pipex.c pipex_utils.c
+                          
+OBJS= $(SRCS:.c=.o)
 
-# ------------  PROJECT  ----------------------------------------------------- #
-NAME = pipex.a
-LIBFT = libft/libft.a
+.c.o:
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-# ------------  SOURCE FILES  ------------------------------------------------ #
-FILES = pipex.c\
-		pipex_utils.c
+${NAME}:	${OBJS}
+			${CC} ${FLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
-OBJ = $(FILES:.c=.o)
+all:		libft ${NAME}
 
-# ------------  FLAGS  ------------------------------------------------------- #
-CC =		gcc
-RM =		rm -rf
-CFLAGS =	-Wall -Werror -Wextra
-LIB =		ar rcs
+bonus:		all
 
-# ------------  RULES  ------------------------------------------------------- #
-$(NAME): $(OBJ)
-	@ echo "\n	-------- Compiling program... --------"	
-	@ $(LIB) $(NAME) $(OBJ)
-	@ make -C libft/
-	@ echo "		Pipex compiled!!\n"
-
-$(OBJ): $(FILES)
-	@ $(CC) $(CFLAGS) -c $(FILES)
-
-all: $(NAME)
-
+libft:
+			@ make -C libft/
 clean:
-	@ $(RM) $(OBJ)
-	@ make -C libft/ clean
-		
-fclean: clean
-	@ echo "\n	Deleting everything!!\n"
-	@ $(RM) $(NAME) $(LIBFT)
-	@ make -C libft/ clean
-	
+			@ ${RM} *.o */*.o */*/*.o
 
-re: fclean all
+fclean:		clean
+			@ ${RM} ${NAME}
 
-.PHONY: re all clean fclean
+re:			fclean all
+
+.PHONY:		all clean fclean re
+
+

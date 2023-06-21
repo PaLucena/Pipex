@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/20 15:19:38 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:46:24 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	child_process(char **av, char **envp, int *fd)
 
 	infile = open(av[1], O_RDONLY);
 	if (infile == -1)
-		perror();
-	dup2(av[1], STDIN_FILENO);
+		exit(1);
+	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
-	cloes(ev[1])
-	exec_program(); // Está por empezar
+	close(infile);
+	exec_program(av, envp);
 }
 
 void	parent_process(char **av, char **envp, int *fd)
@@ -39,12 +39,12 @@ void	parent_process(char **av, char **envp, int *fd)
 	wait(NULL);
 	outfile = open(av[4], O_WRONLY);
 	if (outfile == -1)
-		perror();
-	dup2(av[4], STDOUT_FILENO);
+		exit(1);
+	dup2(outfile, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);
-	close(av[4]);
-	exec_program();
+	close(outfile);
+	exec_program(av, envp);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -56,9 +56,9 @@ int	main(int ac, char **av, char **envp)
 	{
 		pid = fork();
 		if (pipe(fd) == -1)
-			return (perror("pipe: "));
+			return (1);
 		else if (pid == -1)
-			return (perror("fork: "));
+			return (1);
 		if (pid == 0)
 			child_process(av, envp, fd);
 		else
@@ -66,8 +66,8 @@ int	main(int ac, char **av, char **envp)
 	}
 	else
 	{
-		ft_putstr_fd("Wrong arguments\n");
-		ft_putstr_fd("Example: ./pipex file1 cmd1 cmd2 file2\n ");
+		ft_putstr_fd("Wrong arguments\n", 1);
+		ft_putstr_fd("Example: ./pipex file1 cmd1 cmd2 file2\n ", 1);
 	}
 	return (0);
 }
