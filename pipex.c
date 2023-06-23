@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/21 18:46:24 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:05:03 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,30 @@ void	child_process(char **av, char **envp, int *fd)
 {
 	int	infile;
 
+	ft_putstr_fd("soy el hijo\n", 1);
 	infile = open(av[1], O_RDONLY);
 	if (infile == -1)
 		exit(1);
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
-	close(infile);
-	exec_program(av, envp);
+	printf("\nHemos llegado a 1.0\n");
+	exec_program(av[2], envp);
 }
 
 void	parent_process(char **av, char **envp, int *fd)
 {
 	int	outfile;
 
-	wait(NULL);
-	outfile = open(av[4], O_WRONLY);
+	ft_putstr_fd("soy el padre\n", 1);
+	outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (outfile == -1)
 		exit(1);
 	dup2(outfile, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);
-	close(outfile);
-	exec_program(av, envp);
+	printf("\nHemos llegado a 1.1\n");
+	exec_program(av[3], envp);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -61,8 +62,8 @@ int	main(int ac, char **av, char **envp)
 			return (1);
 		if (pid == 0)
 			child_process(av, envp, fd);
-		else
-			parent_process(av, envp, fd);
+		waitpid(pid, NULL, 0);
+		parent_process(av, envp, fd);
 	}
 	else
 	{

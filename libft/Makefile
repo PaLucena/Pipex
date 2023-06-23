@@ -6,7 +6,7 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 16:54:11 by palucena          #+#    #+#              #
-#    Updated: 2023/04/29 18:33:37 by palucena         ###   ########.fr        #
+#    Updated: 2023/06/23 14:55:14 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,21 +45,18 @@ SOURCE = ft_isalpha.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
-		ft_putnbr_fd.c
-
-SOURCE_BONUS = ft_lstnew_bonus.c\
-				ft_lstadd_front_bonus.c\
-				ft_lstsize_bonus.c\
-				ft_lstlast_bonus.c\
-				ft_lstadd_back_bonus.c\
-				ft_lstdelone_bonus.c\
-				ft_lstclear_bonus.c\
-				ft_lstiter_bonus.c\
-				ft_lstmap_bonus.c
+		ft_putnbr_fd.c\
+		ft_lstnew_bonus.c\
+		ft_lstadd_front_bonus.c\
+		ft_lstsize_bonus.c\
+		ft_lstlast_bonus.c\
+		ft_lstadd_back_bonus.c\
+		ft_lstdelone_bonus.c\
+		ft_lstclear_bonus.c\
+		ft_lstiter_bonus.c\
+		ft_lstmap_bonus.c
 
 OBJ = $(SOURCE:.c=.o)
-
-OBJ_BONUS = $(SOURCE_BONUS:.c=.o)
 
 CC = gcc
 
@@ -70,20 +67,21 @@ LIB = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(LIB) $(NAME) $(OBJ)
+	@echo "\n		Compiling library..."
+	@$(LIB) $(NAME) $(OBJ)
 
 $(OBJ): $(SOURCE)
-	$(CC) $(CFLAGS) -c $(SOURCE)
+	@$(CC) $(CFLAGS) -c $(SOURCE)
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 bonus: $(OBJ_BONUS) $(OBJ)
-	$(LIB) $(NAME) $(OBJ) $(OBJ_BONUS)
+	$(LIB) $(NAME) $(OBJ)
 
 .PHONY: re all clean fclean bonus
