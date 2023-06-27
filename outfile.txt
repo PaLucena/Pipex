@@ -1,9 +1,1 @@
-
-Hemos llegado a 1.1
-
-Hemos llegado a 0
-
-Hemos llegado a 1
-Hemos llegado a 2
-Hemos llegado a 3
-sale de find path
+       0       0       0 total
