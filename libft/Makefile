@@ -6,7 +6,7 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 16:54:11 by palucena          #+#    #+#              #
-#    Updated: 2023/06/23 14:55:14 by palucena         ###   ########.fr        #
+#    Updated: 2023/06/27 17:34:10 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,17 @@ SOURCE = ft_isalpha.c\
 		ft_lstdelone_bonus.c\
 		ft_lstclear_bonus.c\
 		ft_lstiter_bonus.c\
-		ft_lstmap_bonus.c
+		ft_lstmap_bonus.c\
+		ft_printf.c\
+		ft_putchar.c\
+		ft_printchar.c\
+		ft_printstr.c\
+		ft_printptr.c\
+		ft_printdec.c\
+		ft_printunsigned.c\
+		ft_printhexa.c\
+		get_next_line.c\
+		get_next_line_utils.c
 
 OBJ = $(SOURCE:.c=.o)
 
@@ -81,7 +91,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJ_BONUS) $(OBJ)
-	$(LIB) $(NAME) $(OBJ)
-
-.PHONY: re all clean fclean bonus
+.PHONY: re all clean fclean

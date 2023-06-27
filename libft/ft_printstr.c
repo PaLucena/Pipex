@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 12:18:43 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:02:49 by palucena         ###   ########.fr       */
+/*   Created: 2023/04/29 20:16:42 by palucena          #+#    #+#             */
+/*   Updated: 2023/06/27 17:14:43 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nb, size_t size)
+int	ft_printstr(char *str)
 {
-	char	*ptr;
-	size_t	i;
+	int	i;
 
-	ptr = malloc(size * nb);
-	if (!ptr)
-		return (0);
 	i = 0;
-	while (i < (nb * size))
+	if (!str)
+		return (ft_printstr("(null)"));
+	while (str[i])
 	{
-		ptr[i] = 0;
+		ft_printchar(str[i]);
 		i++;
 	}
-	return (ptr);
+	return (i);
 }

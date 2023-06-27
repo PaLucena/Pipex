@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_printunsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 12:18:43 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:02:49 by palucena         ###   ########.fr       */
+/*   Created: 2023/04/30 21:20:27 by palucena          #+#    #+#             */
+/*   Updated: 2023/06/27 17:14:47 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nb, size_t size)
+int	ft_printunsigned(unsigned int nb)
 {
-	char	*ptr;
-	size_t	i;
+	int	c;
 
-	ptr = malloc(size * nb);
-	if (!ptr)
-		return (0);
-	i = 0;
-	while (i < (nb * size))
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	return (ptr);
+	c = 0;
+	if (nb >= 10)
+		c += ft_printunsigned(nb / 10);
+	ft_putchar(nb % 10 + '0');
+	c++;
+	return (c);
 }

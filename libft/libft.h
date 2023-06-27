@@ -6,15 +6,21 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:08:29 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:14:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+#include <stdarg.h>
 
 typedef struct s_list
 {
@@ -22,6 +28,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+/* libft file functions */
 int				ft_atoi(const char *str);
 void			ft_bzero(void *str, size_t n);
 void			*ft_calloc(size_t nb, size_t size);
@@ -66,5 +73,21 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+
+/* ft_printf file functions */
+int		ft_printchar(char c);
+int		ft_printdec(int nb);
+int		ft_printf(char const *type, ...);
+int		ft_printhexa(unsigned long long nb, char c);
+int		ft_printptr(unsigned long long ptr);
+int		ft_printstr(char *str);
+int		ft_printunsigned(unsigned int nb);
+void	ft_putchar(char c);
+
+/* get_next_line file functions */
+char			*get_next_line(int fd);
+int				ft_strchr_mod(const char *str, int c);
+char			*ft_strjoin_mod(char const *s1, char const *s2);
+int				ft_line_len(char *str);
 
 #endif
