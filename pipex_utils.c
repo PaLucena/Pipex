@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:22:44 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 19:17:20 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:17:08 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*find_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (ft_strncmp(envp[i], "PATH", 4) != 0)
 		i++;
 	all_paths = ft_split(envp[i] + 5, ':');
 	i = -1;
@@ -44,5 +44,5 @@ void	exec_program(char *cmd, char **envp)
 		ft_printf("Error: command not found");
 		exit(EXIT_FAILURE);
 	}
-	execve(path, &cmd, envp);
+	execve(path, cmd_new, envp);
 }

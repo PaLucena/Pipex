@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 19:17:37 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:09:09 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 	{
-		ft_printf("Wrong arguments\n");
+		ft_printf("Error: Wrong arguments\n");
 		ft_printf("\nExample: ./pipex file1 cmd1 cmd2 file2\n ");
 		exit(EXIT_FAILURE);
 	}
