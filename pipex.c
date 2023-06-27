@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:29:02 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:17:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	child_process(char **av, char **envp, int *fd)
 {
 	int	infile;
 
-	infile = open(av[1], O_RDONLY);
+	infile = open(av[1], O_RDONLY, 0777);
 	if (infile == -1)
-		exit(1);
+	{
+		ft_printf("Infile error\n");
+		exit(EXIT_FAILURE);
+	}
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
@@ -35,9 +38,12 @@ void	parent_process(char **av, char **envp, int *fd)
 {
 	int	outfile;
 
-	outfile = open(av[4], O_CREAT | O_RDWR, 0644);
+	outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (outfile == -1)
-		exit(1);
+	{
+		ft_printf("Outfile error\n");
+		exit(EXIT_FAILURE);
+	}
 	dup2(outfile, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);
@@ -51,8 +57,9 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 	{
-		ft_printf("Wrong arguments\n", 1);
-		ft_printf("Example: ./pipex file1 cmd1 cmd2 file2\n ", 1);
+		ft_printf("Wrong arguments\n");
+		ft_printf("\nExample: ./pipex file1 cmd1 cmd2 file2\n ");
+		exit(EXIT_FAILURE);
 	}
 	if (pipe(fd) == -1)
 	{
@@ -67,7 +74,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	if (pid == 0)
 		child_process(av, envp, fd);
-	waitpid(pid, NULL, 0);
+	wait(0);
 	parent_process(av, envp, fd);
 	return (0);
 }

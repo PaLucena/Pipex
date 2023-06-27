@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:22:44 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:30:01 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:17:20 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,21 @@
 char	*find_path(char *cmd, char **envp)
 {
 	char	*path;
-	char	**a;
+	char	**all_paths;
 	int		i;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH=", 5) == 0)
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
-	a = ft_split(envp[i] + 5, ':');
-	i = 0;
-	path = ft_strjoin(ft_strjoin(a[i], "/"), cmd);
-	while (access(path, F_OK) != 0)
+	all_paths = ft_split(envp[i] + 5, ':');
+	i = -1;
+	while (all_paths[++i])
 	{
-		i++;
-		ft_printf("%s\n", path); // temporal
-		path = ft_strjoin(ft_strjoin(a[i], "/"), cmd);
+		path = ft_strjoin(ft_strjoin(all_paths[i], "/"), cmd);
+		if (access(path, X_OK) == 0)
+			return (path);
 	}
-	return (path);
+	return (0);
 }
 
 void	exec_program(char *cmd, char **envp)
@@ -40,11 +39,10 @@ void	exec_program(char *cmd, char **envp)
 
 	cmd_new = ft_split(cmd, ' ');
 	path = find_path(cmd_new[0], envp);
-	ft_printf("%s\n", path); // temporal
-	if (access(path, F_OK) != -1)
-		execve(path, &cmd, envp);
-	else
-		ft_printf("Error: command not found", 1);
+	if (access(path, F_OK) == -1)
+	{
+		ft_printf("Error: command not found");
+		exit(EXIT_FAILURE);
+	}
+	execve(path, &cmd, envp);
 }
-
-// ./pipex f "ls -l"
