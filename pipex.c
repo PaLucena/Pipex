@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 16:38:36 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:29:02 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 	{
-		ft_putstr_fd("Wrong arguments\n", 1);
-		ft_putstr_fd("Example: ./pipex file1 cmd1 cmd2 file2\n ", 1);
+		ft_printf("Wrong arguments\n", 1);
+		ft_printf("Example: ./pipex file1 cmd1 cmd2 file2\n ", 1);
 	}
 	if (pipe(fd) == -1)
 	{
-		ft_putstr_fd("Pipe error\n");
+		ft_printf("Pipe error\n");
 		exit(EXIT_FAILURE);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
-		ft_putstr_fd("Fork error\n");
+		ft_printf("Fork error\n");
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0)
