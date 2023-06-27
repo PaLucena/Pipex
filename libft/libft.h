@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:14:14 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:28:52 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -75,14 +75,14 @@ int				ft_tolower(int c);
 int				ft_toupper(int c);
 
 /* ft_printf file functions */
-int		ft_printchar(char c);
-int		ft_printdec(int nb);
-int		ft_printf(char const *type, ...);
-int		ft_printhexa(unsigned long long nb, char c);
-int		ft_printptr(unsigned long long ptr);
-int		ft_printstr(char *str);
-int		ft_printunsigned(unsigned int nb);
-void	ft_putchar(char c);
+int				ft_printchar(char c);
+int				ft_printdec(int nb);
+int				ft_printf(char const *type, ...);
+int				ft_printhexa(unsigned long long nb, char c);
+int				ft_printptr(unsigned long long ptr);
+int				ft_printstr(char *str);
+int				ft_printunsigned(unsigned int nb);
+void			ft_putchar(char c);
 
 /* get_next_line file functions */
 char			*get_next_line(int fd);
