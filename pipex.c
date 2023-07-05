@@ -6,15 +6,9 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 21:29:41 by palucena         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:58:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// 1. Analizar el input
-// 2. Ejecutar los comandos
-// 3. Eliminar archivos temporales
-
-// ./pipex infile cmd1 cmd2 outfile
 
 #include "pipex.h"
 

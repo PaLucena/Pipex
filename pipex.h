@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:15:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/22 16:06:54 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:13:18 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@
 // pipex_utils.c
 void	exec_program(char *av, char **envp);
 char	*find_path(char *cmd, char **envp);
+
+// pipex_utils_bonus.c
+void	wrong_args(int ac);
+int		open_doc(char *file, int c);
 
 #endif
