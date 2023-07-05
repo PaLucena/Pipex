@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:22:44 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/05 19:08:14 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/05 23:04:04 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	exec_program(char *cmd, char **envp)
 		ft_printf("Error: command not found");
 		exit(EXIT_FAILURE);
 	}
+	ft_printf("LLega al último exec\n");
 	execve(path, cmd_new, envp);
 }
