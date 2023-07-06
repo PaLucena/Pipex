@@ -6,7 +6,7 @@
 #    By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 16:54:11 by palucena          #+#    #+#              #
-#    Updated: 2023/06/27 17:34:10 by palucena         ###   ########.fr        #
+#    Updated: 2023/07/06 21:00:57 by palucena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ LIB = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\n		Compiling library..."
+	@echo "\n		\033[33mCompiling library..."
 	@$(LIB) $(NAME) $(OBJ)
 
 $(OBJ): $(SOURCE)

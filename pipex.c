@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/30 16:58:12 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:54:18 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void	child_process(char **av, char **envp, int *fd)
 
 	infile = open(av[1], O_RDONLY, 0777);
 	if (infile == -1)
-	{
-		ft_printf("Infile error\n");
-		exit(EXIT_FAILURE);
-	}
+		error_message(3);
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
@@ -34,10 +31,7 @@ void	parent_process(char **av, char **envp, int *fd)
 
 	outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (outfile == -1)
-	{
-		ft_printf("Outfile error\n");
-		exit(EXIT_FAILURE);
-	}
+		error_message(4);
 	dup2(outfile, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);
@@ -49,26 +43,17 @@ int	main(int ac, char **av, char **envp)
 	int		fd[2];
 	pid_t	pid;
 
-	if (ac != 5)
+	if (ac == 5)
 	{
-		ft_printf("Error: Invalid arguments\n");
-		ft_printf("\nExample: ./pipex file1 cmd1 cmd2 file2\n ");
-		exit(EXIT_FAILURE);
+		if (pipe(fd) == -1)
+			error_message(0);
+		pid = fork();
+		if (pid == -1)
+			error_message(1);
+		else if (pid == 0)
+			child_process(av, envp, fd);
+		wait(0);
+		parent_process(av, envp, fd);
 	}
-	if (pipe(fd) == -1)
-	{
-		ft_printf("Pipe error\n");
-		exit(EXIT_FAILURE);
-	}
-	pid = fork();
-	if (pid == -1)
-	{
-		ft_printf("Fork error\n");
-		exit(EXIT_FAILURE);
-	}
-	if (pid == 0)
-		child_process(av, envp, fd);
-	wait(0);
-	parent_process(av, envp, fd);
-	return (0);
+	error_message(ac * -1);
 }

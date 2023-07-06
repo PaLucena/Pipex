@@ -1,13 +1,13 @@
-NAME= pipex
-NAME_BONUS= pipex_bonus
+NAME =			pipex
+NAME_BONUS =	pipex_bonus
 
 CC= gcc
-FLAGS=	-Wall -Wextra -Werror 
+FLAGS=	-Wall -Wextra -Werror
 RM=		rm -rf
 
-SRCS=	pipex.c pipex_utils.c
+SRCS=	pipex.c utils.c
 
-SRCS_BONUS=	pipex_bonus.c pipex_utils_bonus.c pipex_utils.c
+SRCS_BONUS=	pipex_bonus.c utils.c
 
 
 OBJS= $(SRCS:.c=.o)
@@ -20,23 +20,23 @@ OBJS_BONUS= $(SRCS_BONUS:.c=.o)
 all:	libft	${NAME}
 
 ${NAME}:	${OBJS}
-	@ echo "\n		Compiling pipex...\n"
+	@ echo "\n		\033[33mCompiling pipex...\n"
 	@ ${CC} ${FLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
 bonus:	libft	${NAME_BONUS}
 
 ${NAME_BONUS}:	${OBJS_BONUS}
-	@ echo "\n		Compiling pipex_bonus...\n"
+	@ echo "\n		\033[33mCompiling pipex_bonus...\n"
 	@ ${CC} ${FLAGS} -o ${NAME_BONUS} ${OBJS_BONUS} libft/libft.a
 
 libft:
 	@ make -C libft/ all
 
 clean:
+	@ echo "\n		\033[31mCleaning...\n"
 	@ ${RM} *.o */*.o
 
 fclean:		clean
-	@ echo "\n		Cleaning...\n"
 	@ ${RM} ${NAME} ${NAME_BONUS}
 	@ ${RM} libft/libft.a
 
