@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 16:15:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/09 18:11:50 by palucena         ###   ########.fr       */
+/*   Created: 2023/07/07 13:20:11 by palucena          #+#    #+#             */
+/*   Updated: 2023/07/07 15:00:53 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <errno.h>
-# include <sys/wait.h>
-# include "libft/libft.h"
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
 
-void	exec_program(char *av, char **envp);
-char	*find_path(char *cmd, char **envp);
-void	error_message(int e);
-int		open_doc(char *file, int c);
-
-#endif
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}

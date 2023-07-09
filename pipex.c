@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/06 20:54:18 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:08:18 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	child_process(char **av, char **envp, int *fd)
 {
 	int	infile;
 
-	infile = open(av[1], O_RDONLY, 0777);
-	if (infile == -1)
-		error_message(3);
+	infile = open(av[1], 1);
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);
@@ -29,9 +27,7 @@ void	parent_process(char **av, char **envp, int *fd)
 {
 	int	outfile;
 
-	outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
-	if (outfile == -1)
-		error_message(4);
+	outfile = open_doc(av[4], 2);
 	dup2(outfile, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[1]);

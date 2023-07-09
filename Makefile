@@ -5,9 +5,9 @@ CC= gcc
 FLAGS=	-Wall -Wextra -Werror
 RM=		rm -rf
 
-SRCS=	pipex.c utils.c
+SRCS=	pipex.c pipex_utils.c
 
-SRCS_BONUS=	pipex_bonus.c utils.c
+SRCS_BONUS=	pipex_bonus.c pipex_utils.c
 
 
 OBJS= $(SRCS:.c=.o)
@@ -20,13 +20,13 @@ OBJS_BONUS= $(SRCS_BONUS:.c=.o)
 all:	libft	${NAME}
 
 ${NAME}:	${OBJS}
-	@ echo "\n		\033[33mCompiling pipex...\n"
+	@ echo "\n		\033[32mPipex compiled!\n"
 	@ ${CC} ${FLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
 bonus:	libft	${NAME_BONUS}
 
 ${NAME_BONUS}:	${OBJS_BONUS}
-	@ echo "\n		\033[33mCompiling pipex_bonus...\n"
+	@ echo "\n		\033[32mPipex_bonus compiled!\n"
 	@ ${CC} ${FLAGS} -o ${NAME_BONUS} ${OBJS_BONUS} libft/libft.a
 
 libft:

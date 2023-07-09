@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/05 18:14:19 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:42:55 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ char			*get_next_line(int fd);
 int				ft_strchr_mod(const char *str, int c);
 char			*ft_strjoin_mod(char const *s1, char const *s2);
 int				ft_line_len(char *str);
+
+/* my own functions */
+int				ft_strcmp(const char *s1, const char *s2);
 
 #endif
