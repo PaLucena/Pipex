@@ -20,20 +20,20 @@ OBJS_BONUS= $(SRCS_BONUS:.c=.o)
 all:	libft	${NAME}
 
 ${NAME}:	${OBJS}
-	@ echo "\n		\033[32mPipex compiled!\n"
+	@ echo "\n\t\t\033[32mPipex compiled!\n"
 	@ ${CC} ${FLAGS} -o ${NAME} ${OBJS} libft/libft.a
 
 bonus:	libft	${NAME_BONUS}
 
 ${NAME_BONUS}:	${OBJS_BONUS}
-	@ echo "\n		\033[32mPipex_bonus compiled!\n"
+	@ echo "\n\t\t\033[32mPipex_bonus compiled!\n"
 	@ ${CC} ${FLAGS} -o ${NAME_BONUS} ${OBJS_BONUS} libft/libft.a
 
 libft:
 	@ make -C libft/ all
 
 clean:
-	@ echo "\n		\033[31mCleaning...\n"
+	@ echo "\n\t\t\033[31mCleaning...\n"
 	@ ${RM} *.o */*.o
 
 fclean:		clean
