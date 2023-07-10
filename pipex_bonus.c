@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/10 13:25:19 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:39:29 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ void	children_processes(char *cmd, char **envp)
 	int		fd[2];
 
 	if (pipe(fd) == -1)
-		error_message(0);
+		exit(-1);
 	pid = fork();
 	if (pid == -1)
-		error_message(1);
+		exit(-1);
 	else if (pid == 0)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		exec_program(cmd, envp);
+		exec_program(cmd, envp
+		);
 	}
 	else
 		parent_process_bonus(fd);
@@ -46,12 +47,12 @@ void	here_doc(char *limiter, int ac)
 	char	*str;
 
 	if (ac < 6)
-		error_message(-1);
+		exit(-1);
 	if (pipe(fd) == -1)
-		error_message(0);
+		exit(-1);
 	here_doc = fork();
 	if (here_doc == -1)
-		error_message(1);
+		exit(-1);
 	else if (here_doc == 0)
 	{
 		close(fd[0]);
@@ -92,5 +93,5 @@ int	main(int ac, char **av, char **envp)
 		dup2(outfile, STDOUT_FILENO);
 		exec_program(av[ac -2], envp);
 	}
-	error_message(ac * -1);
+	error(ac);
 }

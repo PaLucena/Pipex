@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:15:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/09 18:11:50 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:15:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 void	exec_program(char *av, char **envp);
 char	*find_path(char *cmd, char **envp);
-void	error_message(int e);
+void	error(int e);
 int		open_doc(char *file, int c);
 
 #endif

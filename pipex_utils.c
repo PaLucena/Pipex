@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:39:24 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/10 13:03:17 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:19:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,21 @@ void	exec_program(char *cmd, char **envp)
 		free(cmd_new);
 	}
 	if (access(path, F_OK) == -1)
-		error_message(3);
+		exit(-1);
 	execve(path, cmd_new, envp);
 }
 
-void	error_message(int e)
+void	error(int e)
 {
-	if (e > -5 && e <= 3)
+	if (e < 6)
 	{
-		if (e > -5 && e < 0)
-		{
-			ft_putstr_fd("\n\t\033[31mError: Wrong number of arguments\n", 1);
-			ft_putstr_fd("\n\tExample:  ./pipex file1 cmd1 cmd2 ... file2\n", 1);
-		}
-		else if (e == 0)
-			ft_putstr_fd("\n\t\033[31mPipe error\n", 1);
-		else if (e == 1)
-			ft_putstr_fd("\n\t\033[31mFork error\n", 1);
-		else if (e == 2)
-			ft_putstr_fd("\n\t\033[31mOpening error\n", 1);
-		else if (e == 3)
-			ft_putstr_fd("\\n\t033[31mError: Command not found\n", 1);
-		ft_putstr_fd("\n", 1);
-		exit(EXIT_FAILURE);
+		ft_putstr_fd("\n\033[31mError: Wrong number of arguments\n", 1);
+		ft_putstr_fd("Example: ./pipex_bonus infile cmd1 cmd2 ... outfile\n", 1);
+		ft_putstr_fd("\t ./pipex_bonus here_doc LIMITER cmd1 cmd2 outfile\n\n", 1);
+		exit(-1);
 	}
-	exit(EXIT_SUCCESS);
+	else
+		exit(0);
 }
 
 int	open_doc(char *file, int c)
@@ -90,6 +80,6 @@ int	open_doc(char *file, int c)
 	else if (c == 2)
 		fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (fd < 0)
-		error_message(2);
+		exit(-1);
 	return (fd);
 }
