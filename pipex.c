@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/09 18:08:18 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:52:17 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	child_process(char **av, char **envp, int *fd)
 {
 	int	infile;
 
-	infile = open(av[1], 1);
+	infile = open_doc(av[1], 1);
 	dup2(infile, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[0]);

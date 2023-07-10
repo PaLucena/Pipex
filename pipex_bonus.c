@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/09 18:15:54 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 13:12:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	children_processes(char *cmd, char **envp)
 
 void	here_doc(char *limiter, int ac)
 {
-	int		here_doc;
+	pid_t	here_doc;
 	int		fd[2];
 	char	*str;
 
@@ -56,15 +56,14 @@ void	here_doc(char *limiter, int ac)
 	{
 		close(fd[0]);
 		str = get_next_line(0);
-		while (str)
+		while (ft_strcmp(str, limiter) != 10)
 		{
-			if (ft_strcmp(str, limiter) != 0)
-				break ;
 			ft_putstr_fd(str, fd[1]);
+			str = get_next_line(0);
 		}
+		exit(EXIT_SUCCESS);
 	}
-	else
-		parent_process_bonus(fd);
+	parent_process_bonus(fd);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -77,13 +76,13 @@ int	main(int ac, char **av, char **envp)
 	{
 		if (ft_strncmp(av[1], "here_doc", 8) == 0)
 		{
-			i = 3;
+			i = 2;
 			outfile = open_doc(av[ac - 1], 2);
 			here_doc(av[2], ac);
 		}
 		else
 		{
-			i = 2;
+			i = 1;
 			infile = open_doc(av[1], 1);
 			outfile = open_doc(av[ac - 1], 2);
 			dup2(infile, STDIN_FILENO);
