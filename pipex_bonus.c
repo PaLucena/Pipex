@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/10 13:12:45 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/10 13:25:19 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	parent_process_bonus(int *fd)
 {
+	waitpid(-1, NULL, 0);
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
-	waitpid(-1, NULL, 0);
 }
 
 void	children_processes(char *cmd, char **envp)
@@ -45,7 +45,7 @@ void	here_doc(char *limiter, int ac)
 	int		fd[2];
 	char	*str;
 
-	if (ac != 6)
+	if (ac < 6)
 		error_message(-1);
 	if (pipe(fd) == -1)
 		error_message(0);
