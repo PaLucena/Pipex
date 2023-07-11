@@ -6,11 +6,11 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/10 17:39:29 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:03:00 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 void	parent_process_bonus(int *fd)
 {
@@ -33,8 +33,7 @@ void	children_processes(char *cmd, char **envp)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		exec_program(cmd, envp
-		);
+		exec_program(cmd, envp);
 	}
 	else
 		parent_process_bonus(fd);

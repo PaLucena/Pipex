@@ -6,11 +6,11 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:39:24 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/10 17:19:56 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:34:17 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 char	*find_path(char *cmd, char **envp)
 {
