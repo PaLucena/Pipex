@@ -5,14 +5,14 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-SRC_DIR = src/
+SRC_PATH = src/
 SRC = pipex.c pipex_utils.c
-OBJ_DIR = objs/
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJ_PATH = objs/
+OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
 
-SRC_DIR_B = src/
-SRC_B = pipex_bonus.c pipex_utils.c
-OBJ_B = $(addprefix $(OBJ_DIR), $(SRC_B:.c=.o))
+SRC_BONUS_PATH = src/
+SRC_BONUS = pipex_bonus.c pipex_utils.c
+OBJ_BONUS = $(addprefix $(OBJ_PATH), $(SRC_BONUS:.c=.o))
 
 
 all: libft $(NAME)
@@ -21,34 +21,34 @@ bonus: libft $(NAME_BONUS)
 
 $(NAME): $(OBJ)
 	@ $(CC) $(FLAGS) -o $(NAME) $(OBJ) libft/*.o
-	@ echo "\n\t\t\033[32mPipex compiled!\n"
+	@ echo "\n\t\t\033[32m----Pipex compiled----\n"
 
-$(NAME_BONUS): $(OBJ_B)
-	@ $(CC) $(FLAGS) -o $(NAME_BONUS) $(OBJ_B) libft/*.o
-	@ echo "\n\t\t\033[32mPipex_bonus compiled!\n"
+$(NAME_BONUS): $(OBJ_BONUS)
+	@ $(CC) $(FLAGS) -o $(NAME_BONUS) $(OBJ_BONUS) libft/*.o
+	@ echo "\n\t\t\033[32m----Pipex_bonus compiled----\n"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@ mkdir -p $(OBJ_DIR)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@ mkdir -p $(OBJ_PATH)
 	@ $(CC) $(FLAGS) -c $< -o $@
 
-$(OBJ_DIR)%.o: $(SRC_DIR_B)%.c
-	@ mkdir -p $(OBJ_DIR)
+$(OBJ_PATH)%.o: $(SRC_BONUS_PATH)%.c
+	@ mkdir -p $(OBJ_PATH)
 	@ $(CC) $(FLAGS) -c $< -o $@
 
 libft:
 	@make -C libft/
 
+re: fclean all
+
+re_bonus: fclean bonus
+
 clean:
-	@ $(RM) -r $(OBJ_DIR)
+	@ $(RM) -r $(OBJ_PATH)
 	@ make -C libft/ clean
-	@ echo "\n\t\t\033[31mEverything is clean!\n"
+	@ echo "\n\t\t\033[31m----Deleting everything----\n"
 
 fclean: clean
 	@ $(RM) $(NAME) $(NAME_BONUS)
 	@ make -C libft/ fclean
 
-re: fclean all
-
-re_bonus: fclean bonus
-
-.PHONY: all bonus libft clean fclean re re_bonus
+.PHONY: all bonus libft re re_bonus clean fclean

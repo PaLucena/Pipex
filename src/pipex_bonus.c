@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/11 17:03:00 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:22:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	children_processes(char *cmd, char **envp)
 	int		fd[2];
 
 	if (pipe(fd) == -1)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	pid = fork();
 	if (pid == -1)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	else if (pid == 0)
 	{
 		close(fd[0]);
@@ -46,12 +46,12 @@ void	here_doc(char *limiter, int ac)
 	char	*str;
 
 	if (ac < 6)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	if (pipe(fd) == -1)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	here_doc = fork();
 	if (here_doc == -1)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	else if (here_doc == 0)
 	{
 		close(fd[0]);

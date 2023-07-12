@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 16:23:02 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/11 16:51:38 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:23:56 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	main(int ac, char **av, char **envp)
 	if (ac == 5)
 	{
 		if (pipe(fd) == -1)
-			exit(-1);
+			exit(EXIT_FAILURE);
 		pid = fork();
 		if (pid == -1)
-			exit(-1);
+			exit(EXIT_FAILURE);
 		else if (pid == 0)
 			child_process(av, envp, fd);
 		wait(0);
@@ -53,7 +53,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	else
 	{
-		ft_putstr_fd("Error: Wrong number of arguments\n", 1);
+		ft_putstr_fd("\033[31mError: Wrong number of arguments\n", 1);
 		ft_putstr_fd("Example: ./pipex infile cmd1 cmd2 outfile\n", 1);
 	}
 	return (0);

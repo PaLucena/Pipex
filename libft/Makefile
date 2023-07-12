@@ -71,11 +71,11 @@ LIB = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\n		\033[32mLibrary compiled!\n"
+	@echo "\n\t\t\033[32m----Library compiled----\n"
 	@$(LIB) $(NAME) $(OBJ)
 
-$(OBJ): $(SOURCE)
-	@$(CC) $(CFLAGS) -c $(SOURCE)
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)

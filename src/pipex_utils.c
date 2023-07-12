@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:39:24 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/11 17:34:17 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:24:50 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	exec_program(char *cmd, char **envp)
 		free(cmd_new);
 	}
 	if (access(path, F_OK) == -1)
-		exit(-1);
-	execve(path, cmd_new, envp);
+		exit(EXIT_FAILURE);
+	if (execve(path, cmd_new, envp) == -1)
+		exit(EXIT_FAILURE);
 }
 
 void	error(int e)
@@ -64,7 +65,7 @@ void	error(int e)
 		ft_putstr_fd("\n\033[31mError: Wrong number of arguments\n", 1);
 		ft_putstr_fd("Example: ./pipex_bonus infile cmd1 cmd2 ... outfile\n", 1);
 		ft_putstr_fd("\t ./pipex_bonus here_doc LIMITER cmd1 cmd2 outfile\n\n", 1);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	else
 		exit(0);
@@ -80,6 +81,6 @@ int	open_doc(char *file, int c)
 	else if (c == 2)
 		fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (fd < 0)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	return (fd);
 }
