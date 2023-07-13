@@ -36,7 +36,7 @@ $(OBJ_PATH)%.o: $(SRC_BONUS_PATH)%.c
 	@ $(CC) $(FLAGS) -c $< -o $@
 
 libft:
-	@make -C libft/
+	@ make -C libft/
 
 re: fclean all
 
