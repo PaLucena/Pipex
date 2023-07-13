@@ -6,10 +6,16 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:38:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/08 18:06:07 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:48:27 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief Converts the initial portion of the string pointed to by str to int.
+ * 
+ * @param str -> string to convert
+ * @return int -> converted value
+ */
 int	ft_atoi(const char *str)
 {
 	int	i;

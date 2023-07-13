@@ -6,10 +6,18 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:37:13 by palucena          #+#    #+#             */
-/*   Updated: 2023/04/21 16:26:52 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:39:31 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief Locates the first occurrence of ’c’ (converted to a char) in 
+ * 		  the string pointed to by ’s’.
+ * 
+ * @param str -> string to search
+ * @param c -> character to search
+ * @return char* -> pointer to the located character
+ */
 char	*ft_strchr(const char *str, int c)
 {
 	if (!*str && (char) c == '\0')

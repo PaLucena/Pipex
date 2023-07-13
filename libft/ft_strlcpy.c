@@ -6,12 +6,20 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:44:58 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:05:33 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:48:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Copy string src to buffer dest of size destsize.
+ * 
+ * @param dest -> destination string
+ * @param src -> source string
+ * @param size -> size of the destination buffer
+ * @return size_t -> the total length of the string they tried to create
+ */
 size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	size_t	i;

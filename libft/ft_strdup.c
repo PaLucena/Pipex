@@ -6,12 +6,19 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:51:57 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:05:16 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:40:53 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Allocates sufficient memory for a copy of the string s1,
+ * 		  does the copy, and returns a pointer to it.
+ * 
+ * @param s -> string to copy
+ * @return char* -> pointer to the copy of s
+ */
 char	*ft_strdup(const char *s)
 {
 	char		*s2;

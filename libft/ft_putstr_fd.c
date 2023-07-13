@@ -6,12 +6,18 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 12:14:35 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:05:05 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:37:33 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Outputs the string ’s’ to the given file descriptor.
+ * 
+ * @param s -> string to output
+ * @param fd -> file descriptor
+ */
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;

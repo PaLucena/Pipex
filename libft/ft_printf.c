@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:11:52 by palucena          #+#    #+#             */
-/*   Updated: 2023/06/27 17:14:24 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:04:15 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int	ft_dtype(char const *content, int i, va_list *params)
 	return (c);
 }
 
+/**
+ * @brief Outputs the string content to the standard output.
+ * 
+ * @param content -> string to output
+ * @param ... -> variable arguments
+ * @return int -> number of characters printed
+ */
 int	ft_printf(char const *content, ...)
 {
 	va_list	params;

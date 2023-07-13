@@ -6,12 +6,22 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:24:28 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:03:01 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 18:01:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Compares byte string s1 against byte string s2.  Both strings are
+ * 		  assumed to be n bytes long.
+ * 
+ * @param s1 -> pointer to the first memory area
+ * @param s2 -> pointer to the second memory area
+ * @param n -> number of bytes to be compared
+ * @return int -> zero if the two strings are identical, otherwise returns the
+ * 				  difference between the first two differing bytes
+ */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*pt_s1;

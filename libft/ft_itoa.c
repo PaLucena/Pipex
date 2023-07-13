@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:43:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 12:59:43 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:55:00 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ int	ft_count(long int n)
 	return (len);
 }
 
+/**
+ * @brief Allocates (with malloc(3)) and returns a string representing the
+ * integer received as an argument. Negative numbers must be handled.
+ * 
+ * @param n -> integer to convert
+ * @return char* -> string representing the integer received as an argument
+ */
 char	*ft_itoa(int n)
 {
 	int			len;

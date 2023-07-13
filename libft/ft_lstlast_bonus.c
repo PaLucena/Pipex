@@ -6,12 +6,18 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:20:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/04/28 12:52:34 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:59:40 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Returns the last element of the list.
+ * 
+ * @param lst -> The address of a pointer to an element.
+ * @return t_list* -> The last element of the list.
+ */
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*actual;

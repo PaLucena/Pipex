@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:50:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:06:02 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:52:55 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ int	ft_finish(char const *s1, char const *set)
 	return (0);
 }
 
+/**
+ * @brief Allocates (with malloc(3)) and returns a copy of ’s1’ with the
+ * 		  characters specified in ’set’ removed from the beginning and the end
+ * 		  of the string.
+ * 
+ * @param s1 -> The string to be trimmed.
+ * @param set -> The reference set of characters to trim.
+ * @return char* -> The trimmed string. NULL if the allocation fails.
+ */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;

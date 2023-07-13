@@ -6,12 +6,21 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:20:15 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:06:05 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:53:29 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Allocates (with malloc(3)) and returns a substring from the string ’s’.
+ * 		  The substring begins at index ’start’ and is of maximum size ’len’.
+ * 
+ * @param s -> The string from which to create the substring.
+ * @param start -> The start index of the substring in the string ’s’.
+ * @param len -> The maximum length of the substring.
+ * @return char* -> The substring. NULL if the allocation fails.
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;

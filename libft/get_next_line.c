@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 19:15:07 by gkrusta           #+#    #+#             */
-/*   Updated: 2023/06/27 17:37:17 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:54:49 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,14 @@ char	*ft_clear_memory(char *str_ac)
 	return (new_line);
 }
 
+/**
+ * @brief Get the next line object from a file descriptor (fd) and returns it
+ * 		  as a string.
+ * 
+ * @param fd -> file descriptor
+ * @return char* -> The line that has been read. NULL if there is nothing else
+ * 				   to read or an error has occurred.
+ */
 char	*get_next_line(int fd)
 {
 	static char	*str_ac;

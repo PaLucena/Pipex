@@ -6,12 +6,21 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 17:27:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/04/21 13:53:31 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:52:08 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Returns a pointer to the last occurrence of the character c in
+ * 		  the string s.
+ * 
+ * @param str -> string to search
+ * @param c -> character to find
+ * @return char* -> pointer to the last occurrence of the character c in
+ * 				   the string s
+ */
 char	*ft_strrchr(const char *str, int c)
 {
 	int	i;

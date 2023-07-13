@@ -6,12 +6,23 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:38:48 by palucena          #+#    #+#             */
-/*   Updated: 2023/05/09 13:14:46 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:49:44 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * @brief Applies the function f to each character of the string passed
+ * 		  as argument by giving its index as first argument to create a
+ * 		  “fresh” new string (with malloc(3)) resulting from the successive
+ * 		  applications of f.
+ * 
+ * @param s -> string to iterate through and apply f to each character of
+ * @param f -> function to apply to each character of s and its index
+ * @return char* -> The “fresh” string created from the successive applications
+ * 				    of f.
+ */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	int		i;

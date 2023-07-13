@@ -6,10 +6,16 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:33:47 by palucena          #+#    #+#             */
-/*   Updated: 2023/04/21 15:10:00 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:53:27 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief Checks for a digit (0 through 9).
+ * 
+ * @param c -> character to check
+ * @return int -> 1 if c is a digit, 0 otherwise
+ */
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
