@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:39:24 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/12 16:24:50 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:35:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	open_doc(char *file, int c)
 		fd = open(file, O_RDONLY, 0777);
 	else if (c == 2)
 		fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0777);
+	else if (c == 3)
+		fd = open(file, O_CREAT | O_RDWR | O_APPEND, 0777);
 	if (fd < 0)
 		exit(EXIT_FAILURE);
 	return (fd);

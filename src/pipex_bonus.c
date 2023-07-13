@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 21:13:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/07/12 16:22:05 by palucena         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:36:09 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **envp)
 		if (ft_strncmp(av[1], "here_doc", 8) == 0)
 		{
 			i = 2;
-			outfile = open_doc(av[ac - 1], 2);
+			outfile = open_doc(av[ac - 1], 3);
 			here_doc(av[2], ac);
 		}
 		else
