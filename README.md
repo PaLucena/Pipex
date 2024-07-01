@@ -3,6 +3,7 @@
 
 <h2>Description</h2>
 <p><strong>pipex</strong> is a project from the 42 cursus that involves creating a program to emulate the behavior of the Unix pipe. The main objective is to understand inter-process communication, file descriptors, and the redirection of standard input/output. The project requires implementing a program that takes commands and files as arguments and mimics the shell pipe functionality.</p>
+<div align="center"><img src="https://github.com/PaLucena/pipex/blob/main/img/pipex.PNG"></div>
 
 <h2>Table of Contents</h2>
 <ul>
